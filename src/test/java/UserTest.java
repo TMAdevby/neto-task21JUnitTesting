@@ -36,14 +36,14 @@ public class UserTest {
     @Test
     @DisplayName("Добавление задачи: пустое название → задача не добавлена")
     public void addDeal_emptyTask_taskNotAdded() {
-        // given:
-        String input = "";
-        Scanner scanner = new Scanner(input);
+        // given
+        User user = new User();
+        Scanner scanner = new Scanner("\n"); // пользователь просто нажал Enter
 
-        // when:
+        // when
         user.addDeal(scanner);
 
-        // then:
+        // then
         assertTrue(user.getList().isEmpty());
     }
 
@@ -67,15 +67,14 @@ public class UserTest {
     @Test
     @DisplayName("Удаление по номеру: некорректный номер → список не изменился")
     public void removeDealByNumber_invalidNumber_listUnchanged() {
-        // given:
+        // given
         user.getList().add("Задача 1");
-        String input = "5";
-        Scanner scanner = new Scanner(input);
+        Scanner scanner = new Scanner("5\n"); // ввод "5" + Enter
 
-        // when:
+        // when
         user.removeDealByNumber(scanner);
 
-        // then:
+        // then
         assertEquals(1, user.getList().size());
         assertEquals("Задача 1", user.getList().get(0));
     }

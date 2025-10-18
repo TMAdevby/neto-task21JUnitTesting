@@ -84,7 +84,7 @@ public class User {
         }catch(NumberFormatException e){
             System.out.println("Введите корректное число");
         }
-        if (number < 0 && number > list.size() - 1){
+        if (number < 0 || number > list.size() - 1){
             System.out.println("Такого номера задачи не существует");
             return;
         }
